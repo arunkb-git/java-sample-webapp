@@ -3,44 +3,78 @@
 <html>
 <head>
     <title>Welcome Page</title>
+
     <style>
-        body {
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, black, blue);
+        }
+
+        body {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(120deg, #6a11cb, #2575fc, #ff6a00);
+            background-size: 400% 400%;
+            animation: gradientMove 12s ease infinite;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
+            width: 450px;
             text-align: center;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 40px 60px;
+            padding: 50px 40px;
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            color: white;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            animation: fadeIn 1.5s ease;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            animation: fadeIn 1.5s ease-out;
+            position: relative;
+        }
+
+        .container::before {
+            content: "";
+            position: absolute;
+            inset: -3px;
+            border-radius: 22px;
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.7), rgba(255,255,255,0.1));
+            z-index: -1;
         }
 
         h1 {
             font-size: 42px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
+            font-weight: 700;
+            color: #ffffff;
+            text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+            margin-bottom: 15px;
         }
 
         .author {
-            font-size: 16px;
-            opacity: 0.8;
-            margin-top: 5px;
+            font-size: 18px;
+            color: #f5f5f5;
+            opacity: 0.9;
+            letter-spacing: 1px;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container:hover {
+            transform: scale(1.03);
+            transition: 0.4s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
         }
     </style>
 </head>
@@ -52,4 +86,5 @@
     </div>
 </body>
 </html>
+
 
