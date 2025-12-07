@@ -1,22 +1,32 @@
 pipeline {
     agent any
 stages {
-        stage("Git Checkout") {
+        stage("Build") {
+            when {
+                branch "develop"
+            }
             steps {
-                echo "git checkout happened here"
+                echo "Build happens here"
             }
         }
 
-        stage("mvn build") {
+        stage("Deploy-Dev") {
+            when {
+                branch "develop"
+            }
             steps {
-                echo "mvh package stage"
+                echo "Deployment happens here"
             }
         }
-
-        stage("tomcat-deployment") {
+       stage("Deploy-Prod") {
+           when {
+               branch "main"
+           }
             steps {
-              echo " deployment happened here "
+                echo "Deployment happens here"
             }
+        }
+      
         }
     }
 }
